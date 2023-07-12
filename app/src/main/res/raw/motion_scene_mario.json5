@@ -1,0 +1,390 @@
+{
+  ConstraintSets: {
+    //Two constraint sets - Start and End
+    //1. Collapsed
+    start: {
+      collapsing_box: {
+        width: 'parent',
+        height: 200,
+        start: [
+          'parent',
+          'start'
+        ],
+        end: [
+          'parent',
+          'end'
+        ],
+        bottom: [
+          'parent',
+          'top',
+          -50
+        ],
+        translationZ: -10,
+        alpha: 0
+      },
+      data_content: {
+        top: [
+          'collapsing_box',
+          'bottom'
+        ],
+        bottom: [
+          'parent',
+          'bottom'
+        ],
+        start: [
+          'parent',
+          'start'
+        ],
+        end: [
+          'parent',
+          'end'
+        ]
+      },
+      content_img: {
+        // Assigned ID for profile pic, which we'll use in the code for the reference
+        width: 90,
+        height: 142,
+        top: [
+          'parent',
+          'top',
+          100
+        ],
+        //top Constraint => [Constraining to what, where, Margin]
+        start: [
+          'parent',
+          'start',
+          16
+        ],
+        //start Constraint
+      },
+      motion_text: {
+        top: [
+          'parent',
+          'top',
+          20
+        ],
+        start: [
+          'parent',
+          'start',
+          16
+        ],
+        translationZ: -7
+      },
+      piranha_flower: {
+        width: 40,
+        height: 90,
+        top: [
+          'collapsing_box',
+          'bottom',
+          -70
+        ],
+        end: [
+          'parent',
+          'end',
+          20
+        ],
+        translationZ: -8
+      },
+      piranha_tunnel: {
+        width: 60,
+        height: 100,
+        top: [
+          'collapsing_box',
+          'bottom',
+          -30
+        ],
+        end: [
+          'parent',
+          'end',
+          10
+        ],
+        translationZ: -8
+      }
+    },
+    //2. Expanded
+    end: {
+      collapsing_box: {
+        //Background
+        width: 'parent',
+        //spread -> is for fill constraints. Like in XML you'd set width/height = '0dp' to let it fill the available area only.
+        height: 200,
+        start: [
+          'parent',
+          'start'
+        ],
+        end: [
+          'parent',
+          'end'
+        ],
+        top: [
+          'parent',
+          'top'
+        ],
+        translationZ: -10,
+        alpha: 1
+      },
+      content_img: {
+        // Assigned ID for content img, which we'll use in the code for the reference
+        width: 90,
+        height: 142,
+        top: [
+          'data_content',
+          'top',
+          -70
+        ],
+        //bottom Constraint => [Constraining to what, where, Margin]
+        start: [
+          'parent',
+          'start',
+          4
+        ],
+        //start Constraint
+      },
+      data_content: {
+        top: [
+          'collapsing_box',
+          'bottom'
+        ],
+        start: [
+          'collapsing_box',
+          'start'
+        ],
+        end: [
+          'collapsing_box',
+          'end'
+        ]
+      },
+      motion_text: {
+        bottom: [
+          'collapsing_box',
+          'bottom',
+          10
+        ],
+        start: [
+          'content_img',
+          'end',
+          2
+        ]
+      },
+      piranha_flower: {
+        width: 40,
+        height: 90,
+        top: [
+          'collapsing_box',
+          'bottom',
+          80
+        ],
+        end: [
+          'parent',
+          'end',
+          20
+        ],
+        translationZ: -10
+      },
+      piranha_tunnel: {
+        width: 60,
+        height: 100,
+        top: [
+          'collapsing_box',
+          'bottom',
+          -20
+        ],
+        end: [
+          'parent',
+          'end',
+          10
+        ],
+        translationZ: -10
+      }
+    }
+  },
+  Transitions: {
+    //to set transition properties between Start and End point.
+    default: {
+      from: 'start',
+      to: 'end',
+      pathMotionArc: 'startHorizontal',
+      // Text will move down with slight circular arc
+      KeyFrames: {
+        KeyAttributes: [
+          //We define different Attr and how we want this to Animate, during transition for a specific composable
+          {
+            target: [
+              'content_img'
+            ],
+            //[collapsed -> expanded]
+            frames: [
+              0,
+              5,
+              10,
+              15,
+              20,
+              25,
+              30,
+              35,
+              40,
+              45,
+              50,
+              55,
+              60,
+              65,
+              70,
+              75,
+              80,
+              85,
+              90,
+              95,
+              100
+            ],
+            //For frames we pass a List containing number between 0 - 100
+            rotationZ: [
+              0,
+              9,
+              18,
+              27,
+              36,
+              45,
+              54,
+              63,
+              72,
+              81,
+              90,
+              81,
+              72,
+              63,
+              54,
+              45,
+              36,
+              27,
+              18,
+              9,
+              0
+            ],
+            //For dangling effect
+            translationX: [
+              0,
+              9,
+              18,
+              27,
+              36,
+              45,
+              54,
+              63,
+              72,
+              81,
+              90,
+              81,
+              72,
+              63,
+              54,
+              45,
+              36,
+              27,
+              18,
+              9,
+              0
+            ],
+            translationY: [
+              0,
+              -14,
+              -28,
+              -42,
+              -56,
+              -70,
+              -84,
+              -98,
+              -112,
+              -126,
+              -130,
+              -126,
+              -112,
+              -98,
+              -84,
+              -70,
+              -56,
+              -42,
+              -28,
+              -14,
+              0
+            ],
+            translationZ: [
+              -1.0,
+              -0.9,
+              -0.8,
+              -0.7,
+              -0.6,
+              -0.5,
+              -0.4,
+              -0.3,
+              -0.2,
+              -0.1,
+              0.0,
+              0.0,
+              0.1,
+              0.1,
+              0.1,
+              0.1,
+              0.1,
+              0.1,
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          {
+            target: [
+              'data_content'
+            ],
+            frames: [
+              0,
+              5,
+              10,
+              15,
+              20,
+              25,
+              30,
+              35,
+              40,
+              45,
+              50,
+              55,
+              60,
+              65,
+              70,
+              75,
+              80,
+              85,
+              90,
+              95,
+              100
+            ],
+            //For frames we pass a List containing number between 0 - 100
+            translationY: [
+              110,
+              98,
+              92,
+              87,
+              80,
+              75,
+              70,
+              65,
+              60,
+              55,
+              50,
+              45,
+              40,
+              35,
+              30,
+              25,
+              20,
+              15,
+              10,
+              5,
+              2
+            ],
+          }
+        ],
+      },
+    }
+  }
+}
