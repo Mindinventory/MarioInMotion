@@ -8,10 +8,14 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.mi.collapsingToolbarWithMotionCompose.ui.MainScreenContent
+import com.mi.collapsingToolbarWithMotionCompose.ui.theme.Cinnabar
 import com.mi.collapsingToolbarWithMotionCompose.ui.theme.CollapsingToolbarWithMotionComposeTheme
+import com.mi.collapsingToolbarWithMotionCompose.ui.theme.DarkGreen
+import com.mi.collapsingToolbarWithMotionCompose.ui.theme.DarkTangerine
 import com.mi.collapsingToolbarWithMotionCompose.ui.theme.MarioRedDark
 
 class MainActivity : ComponentActivity() {
@@ -30,7 +34,7 @@ class MainActivity : ComponentActivity() {
                     // To set the status bar color
                     SideEffect {
                         systemUiController.setSystemBarsColor(
-                            color = MarioRedDark,
+                            color = Color.Black,
                             darkIcons = useDarkIcons
                         )
                     }

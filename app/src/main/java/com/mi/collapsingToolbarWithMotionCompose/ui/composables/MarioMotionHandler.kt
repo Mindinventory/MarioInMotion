@@ -34,8 +34,8 @@ import com.mi.collapsingToolbarWithMotionCompose.R
 import com.mi.collapsingToolbarWithMotionCompose.data.mockdata.ListPreviewParameterProvider
 import com.mi.collapsingToolbarWithMotionCompose.data.model.MiItem
 import com.mi.collapsingToolbarWithMotionCompose.ui.theme.CollapsingToolbarWithMotionComposeTheme
-import com.mi.collapsingToolbarWithMotionCompose.ui.theme.MarioRedDark
-import com.mi.collapsingToolbarWithMotionCompose.ui.theme.MarioRedLight
+import com.mi.collapsingToolbarWithMotionCompose.ui.theme.GridBackground
+import com.mi.collapsingToolbarWithMotionCompose.ui.theme.OffWhite
 
 @OptIn(ExperimentalMotionApi::class)
 @Composable
@@ -44,7 +44,7 @@ fun MarioMotionHandler(
     columns: Int,
     modifier: Modifier = Modifier,
     scrollState: ScrollState = rememberScrollState(),
-    contentPadding: PaddingValues = PaddingValues(0.dp),
+    contentPadding: PaddingValues = PaddingValues(2.dp),
     progress: Float
 ) {
     val context = LocalContext.current
@@ -65,14 +65,15 @@ fun MarioMotionHandler(
         progress = progress,
         modifier = Modifier
             .fillMaxSize()
-            .background(MarioRedLight)
+            .background(GridBackground)
     ) {
+        val propertiesMotionText = motionProperties(id = "motion_text")
 
         /**
          * bg-image
          **/
         Image(
-            painter = painterResource(id = R.drawable.ic_mario_level),
+            painter = painterResource(id = R.drawable.ic_bal_hanuman_level_banner),
             contentDescription = "Toolbar Image",
             contentScale = ContentScale.FillBounds,
             modifier = Modifier
@@ -95,28 +96,44 @@ fun MarioMotionHandler(
         /**
          * Text - Collapsing
          */
-        Text(
-            text = stringResource(id = R.string.collapsing_text_minion),
-            color = MarioRedDark,
+        Column(
             modifier = Modifier
                 .layoutId("motion_text")
-                .zIndex(1f),
-            fontFamily = FontFamily(
-                Font(R.font.super_mario_bros, FontWeight.Light)
-            ),
-            fontSize = 14.sp
-        )
+                .zIndex(1f)
+        ) {
+            Text(
+                text = stringResource(id = R.string.collapsing_text_bal_hanuman_title),
+//                color = OffWhite,
+                color = propertiesMotionText.value.color("copyColor"),
+                fontFamily = FontFamily(
+                    Font(R.font.kid_games, FontWeight.Light)
+                ),
+                fontSize = 20.sp
+            )
+
+            Spacer(modifier = Modifier.height(4.dp))
+
+            Text(
+                text = stringResource(id = R.string.collapsing_text_bal_hanuman_by),
+//                color = OffWhite,
+                color = propertiesMotionText.value.color("copyColor"),
+                fontFamily = FontFamily(
+                    Font(R.font.kid_games, FontWeight.Light)
+                ),
+                fontSize = 12.sp
+            )
+        }
 
         /**
          * Main image
          **/
         Image(
-            painter = painterResource(id = R.drawable.ic_mario_reversed),
+            painter = painterResource(id = R.drawable.ic_hanuman_thumps_up),
             contentScale = ContentScale.Fit,
             modifier = Modifier
                 .layoutId("content_img")
                 .clip(RoundedCornerShape(5.dp)),
-            contentDescription = "Animating Mario Image"
+            contentDescription = "Animating Bal-hanuman Image"
         )
 
         /**
@@ -126,7 +143,7 @@ fun MarioMotionHandler(
             modifier = modifier
                 .verticalScroll(scrollState)
                 .layoutId("data_content")
-                .background(MarioRedLight),
+                .background(GridBackground),
         ) {
             Spacer(
                 modifier = Modifier
@@ -151,7 +168,7 @@ fun MarioMotionHandler(
                         GridCharacterCard(
                             miItem = listItem,
                             modifier = Modifier
-                                .padding(2.dp)
+                                .padding(4.dp)  //To manage space between Grid
                                 .weight(1f)
                         )
                     }
@@ -180,7 +197,7 @@ fun MarioMotionHandler(
          * piranha flower
          **/
         Image(
-            painter = painterResource(id = R.drawable.ic_piranha_flower),
+            painter = painterResource(id = R.drawable.ic_tree_monstar),
             contentScale = ContentScale.Fit,
             modifier = Modifier
                 .layoutId("piranha_flower"),
@@ -191,7 +208,7 @@ fun MarioMotionHandler(
          * piranha tunnel
          **/
         Image(
-            painter = painterResource(id = R.drawable.ic_piranha_tunnel),
+            painter = painterResource(id = R.drawable.ic_tree_trunk),
             contentScale = ContentScale.Fit,
             modifier = Modifier
                 .layoutId("piranha_tunnel"),

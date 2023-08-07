@@ -61,14 +61,17 @@
         top: [
           'parent',
           'top',
-          20
+          12
         ],
         start: [
           'parent',
           'start',
           16
         ],
-        translationZ: -7
+        translationZ: -7,
+        custom: {
+          copyColor: '#1e00a8'
+        }
       },
       piranha_flower: {
         width: 40,
@@ -76,7 +79,7 @@
         top: [
           'collapsing_box',
           'bottom',
-          -70
+          -60
         ],
         end: [
           'parent',
@@ -91,7 +94,7 @@
         top: [
           'collapsing_box',
           'bottom',
-          -30
+          -20
         ],
         end: [
           'parent',
@@ -125,12 +128,12 @@
       },
       content_img: {
         // Assigned ID for content img, which we'll use in the code for the reference
-        width: 90,
-        height: 142,
+        width: 150,
+        height: 190,
         top: [
           'data_content',
           'top',
-          -70
+          -100
         ],
         //bottom Constraint => [Constraining to what, where, Margin]
         start: [
@@ -164,7 +167,10 @@
           'content_img',
           'end',
           2
-        ]
+        ],
+        custom: {
+          copyColor: '#f9f9f9',
+        }
       },
       piranha_flower: {
         width: 40,
@@ -187,7 +193,7 @@
         top: [
           'collapsing_box',
           'bottom',
-          -20
+          10
         ],
         end: [
           'parent',
@@ -290,17 +296,17 @@
               -28,
               -42,
               -56,
-              -70,
-              -84,
-              -98,
-              -112,
-              -126,
-              -130,
-              -126,
-              -112,
-              -98,
-              -84,
-              -70,
+              -90,
+              -110,
+              -140,
+              -170,
+              -200,
+              -230,
+              -200,
+              -170,
+              -140,
+              -110,
+              -90,
               -56,
               -42,
               -28,

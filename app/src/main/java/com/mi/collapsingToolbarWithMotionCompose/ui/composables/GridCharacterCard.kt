@@ -5,13 +5,10 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Star
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
@@ -22,36 +19,40 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.mi.collapsingToolbarWithMotionCompose.R
 import com.mi.collapsingToolbarWithMotionCompose.data.mockdata.ListPreviewParameterProvider
 import com.mi.collapsingToolbarWithMotionCompose.data.model.MiItem
+import com.mi.collapsingToolbarWithMotionCompose.ui.theme.Black
+import com.mi.collapsingToolbarWithMotionCompose.ui.theme.CoinCount
 import com.mi.collapsingToolbarWithMotionCompose.ui.theme.CollapsingToolbarWithMotionComposeTheme
-import com.mi.collapsingToolbarWithMotionCompose.ui.theme.GoldYellow
-import com.mi.collapsingToolbarWithMotionCompose.ui.theme.Gray245
-import com.mi.collapsingToolbarWithMotionCompose.ui.theme.MarioRedDark
 
 @Composable
 fun GridCharacterCard(
-    miItem: MiItem,
-    modifier: Modifier = Modifier
+    miItem: MiItem, modifier: Modifier = Modifier
 ) {
     Card(
-        modifier = modifier.aspectRatio(0.66f),
+        modifier = modifier.aspectRatio(0.84f),
         shape = RoundedCornerShape(8.dp)
     ) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Gray245)
+//                .background(CardBackground)
         ) {
+            Image(
+                painter = painterResource(id = R.drawable.ic_card_bg),
+                contentDescription = "Card background",
+                modifier = Modifier.fillMaxSize()
+            )
             miItem.itemImage?.let { painterResource(it) }?.let {
                 Image(
                     painter = it,
                     contentDescription = miItem.itemDescription,
                     contentScale = ContentScale.FillWidth,
                     modifier = Modifier
-                        .padding(35.dp)
-                        .fillMaxWidth()
+                        .fillMaxSize()
+                        .padding(15.dp)
                 )
             }
             TopBar()
@@ -66,7 +67,7 @@ private fun BoxScope.TopBar() {
         modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight(0.093f)
-            .background(MarioRedDark)
+            .background(Black.copy(alpha = 0.4f))
             .padding(horizontal = 8.dp, vertical = 2.dp)
             .align(Alignment.TopCenter)
     ) {
@@ -78,26 +79,23 @@ private fun BoxScope.TopBar() {
             horizontalArrangement = Arrangement.spacedBy(2.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Icon(
-                imageVector = Icons.Rounded.Star,
-                contentDescription = "Golden star 1",
-                tint = GoldYellow
+            Image(
+                painter = painterResource(id = R.drawable.ic_star),
+                contentDescription = "Golden star 1"
             )
-            Icon(
-                imageVector = Icons.Rounded.Star,
-                contentDescription = "Golden star 2",
-                tint = GoldYellow
+            Image(
+                painter = painterResource(id = R.drawable.ic_star),
+                contentDescription = "Golden star 2"
             )
-            Icon(
-                imageVector = Icons.Rounded.Star,
-                contentDescription = "Golden star 3",
-                tint = GoldYellow
+            Image(
+                painter = painterResource(id = R.drawable.ic_star),
+                contentDescription = "Golden star 3"
             )
         }
 
         Row(
             modifier = Modifier
-                .fillMaxHeight(0.75f)
+                .fillMaxHeight(2f)
                 .wrapContentWidth()
                 .align(Alignment.CenterEnd),
             horizontalArrangement = Arrangement.spacedBy(2.dp),
@@ -106,17 +104,17 @@ private fun BoxScope.TopBar() {
             Image(
                 painter = painterResource(id = R.drawable.ic_coin),
                 contentScale = ContentScale.Fit,
-                modifier = Modifier
-                    .clip(RoundedCornerShape(5.dp)),
+                modifier = Modifier.clip(RoundedCornerShape(5.dp)),
                 contentDescription = "Coin"
             )
             Text(
                 text = "87",
-                color = Color.Black,
+                color = CoinCount,
                 modifier = Modifier,
                 fontFamily = FontFamily(
-                    Font(R.font.super_mario_bros, FontWeight.Normal)
+                    Font(R.font.kid_games, FontWeight.Normal)
                 ),
+                fontSize = 14.sp
             )
         }
     }
@@ -127,8 +125,8 @@ private fun BoxScope.BottomBar(text: String) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .fillMaxHeight(0.14f)
-            .background(MarioRedDark)
+            .fillMaxHeight(0.16f)
+            .background(Black.copy(alpha = 0.3f))
             .align(Alignment.BottomCenter)
     ) {
         Text(
@@ -139,9 +137,11 @@ private fun BoxScope.BottomBar(text: String) {
             modifier = Modifier
                 .fillMaxWidth()
                 .align(Alignment.Center),
+            color = CoinCount,
             fontFamily = FontFamily(
-                Font(R.font.super_mario_bros, FontWeight.Normal)
-            )
+                Font(R.font.kid_games, FontWeight.Normal)
+            ),
+            fontSize = 14.sp
         )
     }
 }
@@ -159,8 +159,7 @@ fun GridItemCardPreview(
         ) {
             list.take(2).forEach {
                 GridCharacterCard(
-                    miItem = it,
-                    modifier = Modifier
+                    miItem = it, modifier = Modifier
                         .padding(2.dp)
                         .weight(1f)
                         .wrapContentHeight()

@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Collapsing Mario Motion</string>
-    <string name="collapsing_text_minion">The Super Mario Bros.\nAnimation·Adventure·Comedy</string>
+    <string name="collapsing_text_title">The Super Mario Bros.</string>
+    <string name="collapsing_text_genre">Animation·Adventure·Comedy</string>
+    <string name="collapsing_text_bal_hanuman_title">BAL HANUMAN</string>
+    <string name="collapsing_text_bal_hanuman_by">BY 300 MIND</string>
 </resources>
